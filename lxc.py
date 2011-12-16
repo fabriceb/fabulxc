@@ -9,14 +9,14 @@ def setup_lxc(name, ip, gateway, dns, mac, vif, public_key, distro="natty", rese
     Starts a standard lxc template, and set it up to a runnable server (idempotent)
 
     Arguments:
-    name -- the name of the container (example : toto)
-    ip   -- the ip of the container on the virtual network (example : 10.0.42.2)
-    gateway -- the ip of your controler, on the virtuall network (example : 10.0.42.1)
-    dns -- the ip of the nameserver, as seen from the virtual network (example : 10.0.42.1)
-    mac -- any virtual mac addresse for you virtual device (example : 00:00:00:00:01)
-    vif -- the name of the virtual device, as seen form the controler (example : veth1)
-    public_key -- the path to the public key to authenticate fabric on the host  (example : ~/.ssh/id_rsa)
-    distro -- name of the lxc template (example : natty)
+    name -- the name of the container (example: toto)
+    ip -- the ip of the container on the virtual network (example: 10.0.42.2)
+    gateway -- the ip of your controler, on the virtual network (example: 10.0.42.1)
+    dns -- the ip of the nameserver, as seen from the virtual network (example: 10.0.42.1)
+    mac -- any virtual mac addresse for you virtual device (example: 00:00:00:00:01)
+    vif -- the name of the virtual device, as seen form the controler (example: veth1)
+    public_key -- the path to the public key to authenticate fabric on the host (example: ~/.ssh/id_rsa)
+    distro -- name of the lxc template (example: natty)
     reset -- True if you want to set up from scratch
 
     """
@@ -73,7 +73,7 @@ def clean_lxc(name):
     destroy a lxc container (idempotent)
     """
     local_sudo('lxc-stop -n %s' % name)
-    if exists_lxc(name) : local_sudo('lxc-destroy -n %s' % name)
+    if exists_lxc(name): local_sudo('lxc-destroy -n %s' % name)
 
 def exists_lxc(name):
     """
